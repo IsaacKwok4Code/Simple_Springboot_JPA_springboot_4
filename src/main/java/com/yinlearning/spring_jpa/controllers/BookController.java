@@ -1,5 +1,6 @@
 package com.yinlearning.spring_jpa.controllers;
 
+import com.yinlearning.spring_jpa.entity.Book;
 import com.yinlearning.spring_jpa.services.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,7 @@ public class BookController {
     }
 
     @RequestMapping("/books")
-    public String getBooks(Model model) {
-
-        model.addAttribute("books", bookService.findAll());
-
-        return "books";
+    public Iterable<Book>  getBooks(Model model) {
+        return bookService.findAll();
     }
 }

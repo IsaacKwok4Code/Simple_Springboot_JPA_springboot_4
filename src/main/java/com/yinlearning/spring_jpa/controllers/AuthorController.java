@@ -1,5 +1,6 @@
 package com.yinlearning.spring_jpa.controllers;
 
+import com.yinlearning.spring_jpa.entity.Author;
 import com.yinlearning.spring_jpa.services.AuthorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,7 @@ public class AuthorController {
     }
 
     @RequestMapping("/authors")
-    public String getAuthors(Model model) {
-
-        model.addAttribute("authors", authorService.findAll());
-
-        return "authors";
+    public Iterable<Author> getAuthors(Model model) {
+        return authorService.findAll();
     }
 }
