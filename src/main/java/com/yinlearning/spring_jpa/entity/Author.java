@@ -1,5 +1,6 @@
 package com.yinlearning.spring_jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -17,6 +18,7 @@ public class Author {
 
     // 1 author can have many books
     @ManyToMany(mappedBy = "authors")
+    @JsonIgnore
     private Set<Book> books = new HashSet<>();
 
     public Long getId() {
@@ -69,7 +71,6 @@ public class Author {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", books=" + books +
                 '}';
     }
 }

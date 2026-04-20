@@ -1,7 +1,9 @@
 package com.yinlearning.spring_jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -19,7 +21,8 @@ public class Publisher {
     private String zipCode;
 
     @OneToMany(mappedBy = "publisher")
-    private Set<Book> books;
+    @JsonIgnore
+    private Set<Book> books = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -90,7 +93,6 @@ public class Publisher {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
-                ", books=" + books +
                 '}';
     }
 }
